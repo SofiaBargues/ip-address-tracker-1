@@ -20,6 +20,8 @@ function App() {
     e.preventDefault();
     console.log(e);
     // TODO: Fetch in handle submit
+    // a che  uear si esto va a s=ahi
+    const data = new FormData(event.target);
   }
   console.log(position);
   return (
