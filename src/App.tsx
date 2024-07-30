@@ -90,9 +90,9 @@ function App() {
   console.log(location);
 
   return (
-    <div className="w-full min-h-screen bg-slate-700 justify-center m-auto font-rubik relative">
+    <div className="w-full min-h-screen bg-slate-700 justify-center m-auto font-rubik relative ">
       <div className=" absolute flex flex-col gap-9 p-10 items-center w-full z-10 ">
-        <div className="text-white font-semibold text-xl ">
+        <div className="text-white font-semibold text-[30px] ">
           IP Address Tracker
         </div>
         <form onSubmit={handleSubmit} className="max-w-[500px]   w-full flex ">
@@ -104,15 +104,24 @@ function App() {
             {">"}
           </button>
         </form>
-        <div className="bg-white p-10 max-w-[500px] w-full m-auto rounded-xl text-center ">
-          <div>IP ADDRESS</div>
-          <div>192.212.174.101</div>
-          <div>LOCATION</div>
-          <div>Brooklyn, NY 10001</div>
-          <div>TIMEZONE</div>
-          <div>UTC -05:00</div>
-          <div>ISP</div>
-          <div>SpaceX Starlink</div>
+        <div className="bg-white p-10 max-w-[500px] w-full m-auto rounded-xl text-center flex flex-col gap-3">
+          <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
+            IP ADDRESS
+          </div>
+          <div className="font-semibold text-xl">192.212.174.101</div>
+
+          <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
+            LOCATION
+          </div>
+          <div className="font-semibold text-xl">Brooklyn, NY 10001</div>
+          <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
+            TIMEZONE
+          </div>
+          <div className="font-semibold text-xl">UTC -05:00</div>
+          <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
+            ISP
+          </div>
+          <div className="font-semibold text-xl">SpaceX Starlink</div>
         </div>
       </div>
       <div className="h-full relative z-0 grid grid-rows-[300px_1fr]">
