@@ -36,17 +36,17 @@ function App() {
   console.log(location);
 
   useEffect(() => {
-    //   setLocation({
-    //     country: "GB",
-    //     region: "England",
-    //     city: "Manchester",
-    //     lat: 53.48095,
-    //     lng: -2.23743,
-    //     postalCode: "",
-    //     timezone: "+01:00",
-    //     geonameId: 2643123,
-    //   });
-    //   return;
+    // setLocation({
+    //   country: "GB",
+    //   region: "England",
+    //   city: "Manchester",
+    //   lat: 53.48095,
+    //   lng: -2.23743,
+    //   postalCode: "",
+    //   timezone: "+01:00",
+    //   geonameId: 2643123,
+    // });
+    // return;
     fetch(
       "https://geo.ipify.org/api/v2/country,city?apiKey=" +
         import.meta.env.VITE_GEO_IP
@@ -99,7 +99,7 @@ function App() {
 
   return (
     <div className="w-full min-h-screen bg-slate-700 justify-center m-auto font-rubik relative ">
-      <div className=" absolute flex flex-col gap-9 p-10 items-center w-full z-10 ">
+      <div className=" absolute flex flex-col gap-14 p-10 items-center w-full z-10 ">
         <div className="text-white font-semibold text-[30px] ">
           IP Address Tracker
         </div>
@@ -108,7 +108,7 @@ function App() {
             placeholder="Search for any IP address or domain"
             type="text"
             name="ip"
-            className="rounded-l-lg h-10 w-full pl-2"
+            className="rounded-l-lg h-10 w-full pl-3"
           />
           <button
             className="bg-black rounded-r-lg w-10  h-10 px-4 text-white"
@@ -117,32 +117,41 @@ function App() {
             {">"}
           </button>
         </form>
-        <div className="bg-white p-10 max-w-[500px] sm:max-w-[1000px] w-full m-auto rounded-xl text-center sm:text-start flex flex-col sm:flex-row gap-3 sm:gap-20 sm:items-start ">
+        <div className="bg-white  p-10 max-w-[500px] sm:max-w-[1000px] w-full m-auto rounded-xl text-center sm:text-start flex flex-col items-center sm:items-start sm:flex-row gap-3 sm:gap-32  ">
           <div>
-            <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
+            <div className="text-[10px] mb-2 font-semibold tracking-[2px] text-[#959595] ">
               IP ADDRESS
             </div>
             <div className="font-semibold text-xl">{ip}</div>
           </div>
-          <div>
-            <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
-              LOCATION
-            </div>
-            <div className="font-semibold text-xl">{location?.city}</div>
-          </div>
-          <div>
-            <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
-              TIMEZONE
-            </div>
-            <div className="font-semibold text-xl">
-              UTC {location?.timezone}
+          <div className="flex flex-row gap-3">
+            <div className="sm:bg-slate-200 h-12 w-[1px]"></div>
+            <div>
+              <div className="text-[10px] mb-2 font-semibold tracking-[2px] text-[#959595]">
+                LOCATION
+              </div>
+              <div className="font-semibold text-xl ">{location?.city}</div>
             </div>
           </div>
-          <div>
-            <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
-              ISP
+          <div className="flex flex-row gap-3">
+            <div className="sm:bg-slate-200 h-12 w-[1px] "></div>
+            <div>
+              <div className="text-[10px] mb-2 font-semibold tracking-[2px] text-[#959595]">
+                TIMEZONE
+              </div>
+              <div className="font-semibold text-xl">
+                UTC {location?.timezone}
+              </div>
             </div>
-            <div className="font-semibold text-xl">{isp}</div>
+          </div>
+          <div className="flex flex-row gap-3">
+            <div className="sm:bg-slate-200 h-12 w-[1px]"></div>
+            <div>
+              <div className="text-[10px] font-semibold tracking-[2px] mb-2 text-[#959595]">
+                ISP
+              </div>
+              <div className="font-semibold text-xl">{isp}</div>
+            </div>
           </div>
         </div>
       </div>
