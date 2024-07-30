@@ -29,22 +29,24 @@ function App() {
   // 2.b renombrar position y setPosition como location y set location
   // 2.c Inicializar con null
   const [location, setLocation] = useState<Location | null>(null);
+  const [isp, setIsp] = useState<string>("");
+  const [ip, setIp] = useState<string>("");
 
   //  TODO: 3. useEffect > Fetch IP Position > save in state
   console.log(location);
 
   useEffect(() => {
-    setLocation({
-      country: "GB",
-      region: "England",
-      city: "Manchester",
-      lat: 53.48095,
-      lng: -2.23743,
-      postalCode: "",
-      timezone: "+01:00",
-      geonameId: 2643123,
-    });
-    return;
+    //   setLocation({
+    //     country: "GB",
+    //     region: "England",
+    //     city: "Manchester",
+    //     lat: 53.48095,
+    //     lng: -2.23743,
+    //     postalCode: "",
+    //     timezone: "+01:00",
+    //     geonameId: 2643123,
+    //   });
+    //   return;
     fetch(
       "https://geo.ipify.org/api/v2/country,city?apiKey=" +
         import.meta.env.VITE_GEO_IP
@@ -56,6 +58,8 @@ function App() {
         // 2.e el useEffect en vez de guardar coordenadas, "location"
 
         setLocation(data.location);
+        setIp(data.ip);
+        setIsp(data.isp);
       });
   }, []);
 
@@ -74,7 +78,9 @@ function App() {
     console.log(ip);
     //1 b. fecht (url con ip)
     await fetch(
-      "https://geo.ipify.org/api/v2/country,city?apiKey=at_6Th4tJ6FGawlQdq2YjUIHzpHHtDzP&ipAddress=" +
+      "https://geo.ipify.org/api/v2/country,city?apiKey=" +
+        import.meta.env.VITE_GEO_IP +
+        "&ipAddress=" +
         ip
     )
       //1 C. hago una funcion que capture el resultaado de la promesa, y retorne un json()
@@ -84,10 +90,12 @@ function App() {
       //1 d.hago una funcion que capture el resultaado de la promesa, y setea estados
       .then((data) => {
         setLocation(data.location);
+        setIp(data.ip);
+        setIsp(data.isp);
       });
   }
 
-  console.log(location);
+  console.log(ip);
 
   return (
     <div className="w-full min-h-screen bg-slate-700 justify-center m-auto font-rubik relative ">
@@ -114,25 +122,27 @@ function App() {
             <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
               IP ADDRESS
             </div>
-            <div className="font-semibold text-xl">192.212.174.101</div>
+            <div className="font-semibold text-xl">{ip}</div>
           </div>
           <div>
             <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
               LOCATION
             </div>
-            <div className="font-semibold text-xl">Brooklyn, NY 10001</div>
+            <div className="font-semibold text-xl">{location?.city}</div>
           </div>
           <div>
             <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
               TIMEZONE
             </div>
-            <div className="font-semibold text-xl">UTC -05:00</div>
+            <div className="font-semibold text-xl">
+              UTC {location?.timezone}
+            </div>
           </div>
           <div>
             <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
               ISP
             </div>
-            <div className="font-semibold text-xl">SpaceX Starlink</div>
+            <div className="font-semibold text-xl">{isp}</div>
           </div>
         </div>
       </div>
