@@ -77,29 +77,31 @@ function App() {
 
   return (
     <div className="w-[325px] h-screen bg-slate-700 justify-center m-auto font-rubik">
-      <div>IP Address Tracker</div>
-      <img
-        src="/pattern-bg-mobile.png"
-        alt=""
-        className="h-[310px] w-[380px]"
-      />
-      {/* --- (5) Add leaflet map container --- */}
-      <div className="">
-        <form onSubmit={handleSubmit} className="">
-          <input type="text" name="ip" />
-          <button className="bg-black text-white" type="submit">
-            {">"}
-          </button>
-        </form>
-        <div className="bg-white h-40 w-40 m-auto rounded-xl text-center">
-          <div>IP ADDRESS</div>
-          <div>192.212.174.101</div>
-          <div>LOCATION</div>
-          <div>Brooklyn, NY 10001</div>
-          <div>TIMEZONE</div>
-          <div>UTC -05:00</div>
-          <div>ISP</div>
-          <div>SpaceX Starlink</div>
+      <div className="bg-[url('/pattern-bg-mobile.png')] ">
+        <div className="">IP Address Tracker</div>
+        {/* <img
+          src="/pattern-bg-mobile.png"
+          alt=""
+          className=""
+        /> */}
+        {/* --- (5) Add leaflet map container --- */}
+        <div className="">
+          <form onSubmit={handleSubmit} className="">
+            <input type="text" name="ip" />
+            <button className="bg-black text-white" type="submit">
+              {">"}
+            </button>
+          </form>
+          <div className="bg-white h-40 w-40 m-auto rounded-xl text-center">
+            <div>IP ADDRESS</div>
+            <div>192.212.174.101</div>
+            <div>LOCATION</div>
+            <div>Brooklyn, NY 10001</div>
+            <div>TIMEZONE</div>
+            <div>UTC -05:00</div>
+            <div>ISP</div>
+            <div>SpaceX Starlink</div>
+          </div>
         </div>
       </div>
       <div>
