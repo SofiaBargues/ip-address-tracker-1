@@ -37,20 +37,22 @@ function App() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     //1 a. uso event para traer las coordenadas
-    const data = new FormData(e.currentTarget);
-    console.log(data.get("ip"));
-
+    const formData = new FormData(e.currentTarget);
+    const ip = formData.get("ip");
+    console.log(ip);
     //1 b. fecht (url con ip)
     await fetch(
-      "https://geo.ipify.org/api/v2/country,city?apiKey=at_6Th4tJ6FGawlQdq2YjUIHzpHHtDzP" +
-        " "
+      "https://geo.ipify.org/api/v2/country,city?apiKey=at_6Th4tJ6FGawlQdq2YjUIHzpHHtDzP&ipAddress=" +
+        ip
     )
       //1 C. hago una funcion que capture el resultaado de la promesa, y retorne un json()
       .then((res) => {
         return res.json();
       })
       //1 d.hago una funcion que capture el resultaado de la promesa, y setea estados
-      .then((data) => {});
+      .then((data) => {
+        setPosition([data.location.lat, data.location.lng]);
+      });
   }
 
   console.log(position);
