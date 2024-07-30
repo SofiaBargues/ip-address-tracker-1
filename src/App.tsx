@@ -117,7 +117,7 @@ function App() {
             {">"}
           </button>
         </form>
-        <div className="bg-white  p-10 max-w-[500px] sm:max-w-[1000px] w-full m-auto rounded-xl text-center sm:text-start flex flex-col items-center sm:items-start sm:flex-row gap-3 sm:gap-32  ">
+        <div className="bg-white p-7 max-w-[500px] sm:max-w-[1000px] w-full m-auto rounded-xl text-center md:text-start flex flex-col items-center md:items-start md:grid md:grid-cols-4 gap-3 sm:gap-0">
           <div>
             <div className="text-[10px] mb-2 font-semibold tracking-[2px] text-[#959595] ">
               IP ADDRESS
@@ -125,7 +125,7 @@ function App() {
             <div className="font-semibold text-xl">{ip}</div>
           </div>
           <div className="flex flex-row gap-3">
-            <div className="sm:bg-slate-200 h-12 w-[1px]"></div>
+            <div className="md:bg-slate-200 h-12 w-[1px]"></div>
             <div>
               <div className="text-[10px] mb-2 font-semibold tracking-[2px] text-[#959595]">
                 LOCATION
@@ -134,7 +134,7 @@ function App() {
             </div>
           </div>
           <div className="flex flex-row gap-3">
-            <div className="sm:bg-slate-200 h-12 w-[1px] "></div>
+            <div className="md:bg-slate-200 h-12 w-[1px] "></div>
             <div>
               <div className="text-[10px] mb-2 font-semibold tracking-[2px] text-[#959595]">
                 TIMEZONE
@@ -145,7 +145,7 @@ function App() {
             </div>
           </div>
           <div className="flex flex-row gap-3">
-            <div className="sm:bg-slate-200 h-12 w-[1px]"></div>
+            <div className="md:bg-slate-200 h-12 w-[1px]"></div>
             <div>
               <div className="text-[10px] font-semibold tracking-[2px] mb-2 text-[#959595]">
                 ISP
