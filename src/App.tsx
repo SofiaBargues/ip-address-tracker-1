@@ -117,7 +117,7 @@ function App() {
             {">"}
           </button>
         </form>
-        <div className="bg-white p-7 max-w-[500px] sm:max-w-[1000px] w-full m-auto rounded-xl text-center md:text-start flex flex-col items-center md:items-start md:grid md:grid-cols-4 gap-3 sm:gap-0">
+        <div className="bg-white p-7 max-w-[300px] md:max-w-[1000px] w-full m-auto rounded-xl text-center md:text-start flex flex-col items-center md:items-start md:grid md:grid-cols-4 gap-3 sm:gap-0">
           <div>
             <div className="text-[10px] mb-2 font-semibold tracking-[2px] text-[#959595] ">
               IP ADDRESS
