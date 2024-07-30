@@ -30,8 +30,6 @@ function App() {
   // 2.c Inicializar con null
   const [location, setLocation] = useState<Location | null>(null);
 
-  // 2.g Actualizar el fetch del handleSubmit
-
   //  TODO: 3. useEffect > Fetch IP Position > save in state
   useEffect(() => {
     fetch(
@@ -52,6 +50,7 @@ function App() {
     location?.lat || 0,
     location?.lng || 0,
   ];
+  // 2.g Actualizar el fetch del handleSubmit
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -70,7 +69,7 @@ function App() {
       })
       //1 d.hago una funcion que capture el resultaado de la promesa, y setea estados
       .then((data) => {
-        setLocation([data.location.lat, data.location.lng]);
+        setLocation(data.location);
       });
   }
 
