@@ -2,24 +2,35 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { FormEvent, useEffect, useState } from "react";
 
+// 2.a Cambiar tipo del estado a:
+//   {
+//     "country": "US",
+//     "region": "California",
+//     "city": "Mountain View",
+//     "lat": 37.40599,
+//     "lng": -122.078514,
+//     "postalCode": "94043",
+//     "timezone": "-07:00",
+//     "geonameId": 5375481
+// } || null
+
+type Location = {
+  country: string;
+  region: string;
+  city: string;
+  lat: number;
+  lng: number;
+  postalCode: string;
+  timezone: string;
+  geonameId: number;
+};
+
 function App() {
-  const [position, setPosition] = useState<[number, number]>([51.505, -0.09]);
-  // 2.a Cambiar tipo del estado a:
-  //   {
-  //     "country": "US",
-  //     "region": "California",
-  //     "city": "Mountain View",
-  //     "lat": 37.40599,
-  //     "lng": -122.078514,
-  //     "postalCode": "94043",
-  //     "timezone": "-07:00",
-  //     "geonameId": 5375481
-  // } || null\
   // 2.b renombrar position y setPosition como location y set location
   // 2.c Inicializar con null
-  // 2.d cuando el estado null no mostrar MapContainer
-  // 2.e el useEfect en vez de guardar coordenadas, "location"
-  // 2.f crear una constante coordinates = [location.lat, location.lng] y usarla en todo el MapContainer
+  const [location, setLocation] = useState<Location | null>(null);
+
+  // 2.g Actualizar el fetch del handleSubmit
 
   //  TODO: 3. useEffect > Fetch IP Position > save in state
   useEffect(() => {
@@ -30,9 +41,17 @@ function App() {
         return res.json();
       })
       .then((data) => {
-        setPosition([data.location.lat, data.location.lng]);
+        // 2.e el useEffect en vez de guardar coordenadas, "location"
+
+        setLocation(data.location);
       });
   }, []);
+
+  // 2.f crear una constante coordinates = [location.lat, location.lng] y usarla en todo el MapContainer
+  const coordinates: [number, number] = [
+    location?.lat || 0,
+    location?.lng || 0,
+  ];
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -51,11 +70,12 @@ function App() {
       })
       //1 d.hago una funcion que capture el resultaado de la promesa, y setea estados
       .then((data) => {
-        setPosition([data.location.lat, data.location.lng]);
+        setLocation([data.location.lat, data.location.lng]);
       });
   }
 
-  console.log(position);
+  console.log(location);
+
   return (
     <div className="w-[325px] h-screen bg-slate-700 justify-center">
       <img
@@ -69,24 +89,29 @@ function App() {
         <button type="submit">{">"} </button>
       </form>
       <div>
-        <MapContainer
-          className="h-[500px] w-[325px]"
-          key={JSON.stringify(position)}
-          center={position}
-          zoom={6}
-          scrollWheelZoom={false}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={position}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
-        </MapContainer>
-      </div>{" "}
+        {/* // 2.d cuando el estado null no mostrar MapContainer */}
+        <div>
+          {location && (
+            <MapContainer
+              className="h-[500px] w-[325px]"
+              key={JSON.stringify(coordinates)}
+              center={coordinates}
+              zoom={6}
+              scrollWheelZoom={false}
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker position={coordinates}>
+                <Popup>
+                  A pretty CSS3 popup. <br /> Easily customizable.
+                </Popup>
+              </Marker>
+            </MapContainer>
+          )}
+        </div>
+      </div>
     </div>
     // TODO: 1. Show Map with position from state
   );
