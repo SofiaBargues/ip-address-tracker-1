@@ -76,57 +76,53 @@ function App() {
   console.log(location);
 
   return (
-    <div className="w-[325px] h-screen bg-slate-700 justify-center m-auto font-rubik">
-      <div className="bg-[url('/pattern-bg-mobile.png')] ">
-        <div className="">IP Address Tracker</div>
-        {/* <img
-          src="/pattern-bg-mobile.png"
-          alt=""
-          className=""
-        /> */}
-        {/* --- (5) Add leaflet map container --- */}
-        <div className="">
-          <form onSubmit={handleSubmit} className="">
-            <input type="text" name="ip" />
-            <button className="bg-black text-white" type="submit">
-              {">"}
-            </button>
-          </form>
-          <div className="bg-white h-40 w-40 m-auto rounded-xl text-center">
-            <div>IP ADDRESS</div>
-            <div>192.212.174.101</div>
-            <div>LOCATION</div>
-            <div>Brooklyn, NY 10001</div>
-            <div>TIMEZONE</div>
-            <div>UTC -05:00</div>
-            <div>ISP</div>
-            <div>SpaceX Starlink</div>
-          </div>
+    <div className="w-full h-screen bg-slate-700 justify-center m-auto font-rubik relative">
+      <div className=" absolute flex flex-col gap-9 p-10 items-center w-full z-10 ">
+        <div className="text-white font-semibold text-xl ">
+          IP Address Tracker
+        </div>
+        <form onSubmit={handleSubmit} className="max-w-[500px]   w-full flex ">
+          <input type="text" name="ip" className="rounded-l-lg h-10 w-full" />
+          <button
+            className="bg-black rounded-r-lg w-10  h-10 px-4 text-white"
+            type="submit"
+          >
+            {">"}
+          </button>
+        </form>
+        <div className="bg-white p-10 max-w-[500px] w-full m-auto rounded-xl text-center ">
+          <div>IP ADDRESS</div>
+          <div>192.212.174.101</div>
+          <div>LOCATION</div>
+          <div>Brooklyn, NY 10001</div>
+          <div>TIMEZONE</div>
+          <div>UTC -05:00</div>
+          <div>ISP</div>
+          <div>SpaceX Starlink</div>
         </div>
       </div>
-      <div>
-        {/* // 2.d cuando el estado null no mostrar MapContainer */}
-        <div>
-          {location && (
-            <MapContainer
-              className="h-[500px] w-[325px]"
-              key={JSON.stringify(coordinates)}
-              center={coordinates}
-              zoom={6}
-              scrollWheelZoom={false}
-            >
-              <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-              <Marker position={coordinates}>
-                <Popup>
-                  A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-              </Marker>
-            </MapContainer>
-          )}
-        </div>
+      <div className="h-full relative z-0">
+        <img src="/pattern-bg-mobile.png" alt="" className="" />
+
+        {location && (
+          <MapContainer
+            className="h-[700px] w-[325px]"
+            key={JSON.stringify(coordinates)}
+            center={coordinates}
+            zoom={6}
+            scrollWheelZoom={false}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={coordinates}>
+              <Popup>
+                A pretty CSS3 popup. <br /> Easily customizable.
+              </Popup>
+            </Marker>
+          </MapContainer>
+        )}
       </div>
     </div>
     // TODO: 1. Show Map with position from state
