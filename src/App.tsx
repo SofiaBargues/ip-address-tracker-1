@@ -8,11 +8,17 @@ function App() {
   //  TODO: 3. useEffect > Fetch IP Position > save in state
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     console.log(e);
     // TODO: Fetch in handle submit
   }
   return (
-    <section>
+    <div className="w-[325px] h-screen bg-slate-700 justify-center">
+      <img
+        src="/pattern-bg-mobile.png"
+        alt=""
+        className="h-[310px] w-[380px]"
+      />
       {/* --- (5) Add leaflet map container --- */}
       <form onSubmit={handleSubmit}>
         <input type="text" />
@@ -20,7 +26,7 @@ function App() {
       </form>
       <div>
         <MapContainer
-          className="h-[300px] w-[300px]"
+          className="h-[500px] w-[325px]"
           center={position}
           zoom={6}
           scrollWheelZoom={false}
@@ -36,7 +42,7 @@ function App() {
           </Marker>
         </MapContainer>
       </div>{" "}
-    </section>
+    </div>
     // TODO: 1. Show Map with position from state
   );
 }
