@@ -31,9 +31,23 @@ function App() {
   const [location, setLocation] = useState<Location | null>(null);
 
   //  TODO: 3. useEffect > Fetch IP Position > save in state
+  console.log(location);
+
   useEffect(() => {
+    setLocation({
+      country: "GB",
+      region: "England",
+      city: "Manchester",
+      lat: 53.48095,
+      lng: -2.23743,
+      postalCode: "",
+      timezone: "+01:00",
+      geonameId: 2643123,
+    });
+    return;
     fetch(
-      "https://geo.ipify.org/api/v2/country,city?apiKey=at_6Th4tJ6FGawlQdq2YjUIHzpHHtDzP"
+      "https://geo.ipify.org/api/v2/country,city?apiKey=" +
+        import.meta.env.VITE_GEO_IP
     )
       .then((res) => {
         return res.json();
@@ -76,7 +90,7 @@ function App() {
   console.log(location);
 
   return (
-    <div className="w-full h-screen bg-slate-700 justify-center m-auto font-rubik relative">
+    <div className="w-full min-h-screen bg-slate-700 justify-center m-auto font-rubik relative">
       <div className=" absolute flex flex-col gap-9 p-10 items-center w-full z-10 ">
         <div className="text-white font-semibold text-xl ">
           IP Address Tracker
@@ -101,12 +115,16 @@ function App() {
           <div>SpaceX Starlink</div>
         </div>
       </div>
-      <div className="h-full relative z-0">
-        <img src="/pattern-bg-mobile.png" alt="" className="" />
+      <div className="h-full relative z-0 grid grid-rows-[300px_1fr]">
+        <img
+          src="/pattern-bg-mobile.png"
+          alt=""
+          className="w-full h-[300px] object-cover"
+        />
 
         {location && (
           <MapContainer
-            className="h-[700px] w-[325px]"
+            className="h-[600px] w-full"
             key={JSON.stringify(coordinates)}
             center={coordinates}
             zoom={6}
