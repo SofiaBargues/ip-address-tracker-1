@@ -96,7 +96,12 @@ function App() {
           IP Address Tracker
         </div>
         <form onSubmit={handleSubmit} className="max-w-[500px]   w-full flex ">
-          <input type="text" name="ip" className="rounded-l-lg h-10 w-full" />
+          <input
+            placeholder="Search for any IP address or domain"
+            type="text"
+            name="ip"
+            className="rounded-l-lg h-10 w-full pl-2"
+          />
           <button
             className="bg-black rounded-r-lg w-10  h-10 px-4 text-white"
             type="submit"
@@ -104,31 +109,43 @@ function App() {
             {">"}
           </button>
         </form>
-        <div className="bg-white p-10 max-w-[500px] w-full m-auto rounded-xl text-center flex flex-col gap-3">
-          <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
-            IP ADDRESS
+        <div className="bg-white p-10 max-w-[500px] sm:max-w-[1000px] w-full m-auto rounded-xl text-center sm:text-start flex flex-col sm:flex-row gap-3 sm:gap-20 sm:items-start ">
+          <div>
+            <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
+              IP ADDRESS
+            </div>
+            <div className="font-semibold text-xl">192.212.174.101</div>
           </div>
-          <div className="font-semibold text-xl">192.212.174.101</div>
-
-          <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
-            LOCATION
+          <div>
+            <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
+              LOCATION
+            </div>
+            <div className="font-semibold text-xl">Brooklyn, NY 10001</div>
           </div>
-          <div className="font-semibold text-xl">Brooklyn, NY 10001</div>
-          <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
-            TIMEZONE
+          <div>
+            <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
+              TIMEZONE
+            </div>
+            <div className="font-semibold text-xl">UTC -05:00</div>
           </div>
-          <div className="font-semibold text-xl">UTC -05:00</div>
-          <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
-            ISP
+          <div>
+            <div className="text-[10px] font-semibold tracking-[2px] text-[#959595]">
+              ISP
+            </div>
+            <div className="font-semibold text-xl">SpaceX Starlink</div>
           </div>
-          <div className="font-semibold text-xl">SpaceX Starlink</div>
         </div>
       </div>
       <div className="h-full relative z-0 grid grid-rows-[300px_1fr]">
         <img
           src="/pattern-bg-mobile.png"
           alt=""
-          className="w-full h-[300px] object-cover"
+          className="w-full h-[300px] object-cover sm:hidden"
+        />
+        <img
+          src="/pattern-bg-desktop.png"
+          alt=""
+          className="w-full h-[300px] object-cover hidden sm:block"
         />
 
         {location && (
