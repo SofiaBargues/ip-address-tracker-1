@@ -36,17 +36,6 @@ function App() {
   console.log(location);
 
   useEffect(() => {
-    // setLocation({
-    //   country: "GB",
-    //   region: "England",
-    //   city: "Manchester",
-    //   lat: 53.48095,
-    //   lng: -2.23743,
-    //   postalCode: "",
-    //   timezone: "+01:00",
-    //   geonameId: 2643123,
-    // });
-    // return;
     fetch(
       "https://geo.ipify.org/api/v2/country,city?apiKey=" +
         import.meta.env.VITE_GEO_IP
@@ -55,8 +44,6 @@ function App() {
         return res.json();
       })
       .then((data) => {
-        // 2.e el useEffect en vez de guardar coordenadas, "location"
-
         setLocation(data.location);
         setIp(data.ip);
         setIsp(data.isp);
