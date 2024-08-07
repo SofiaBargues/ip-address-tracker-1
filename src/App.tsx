@@ -1,7 +1,7 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { FormEvent, useEffect, useState } from "react";
-import { icon, Icon } from "leaflet";
+import { icon } from "leaflet";
 
 // 2.a Cambiar tipo del estado a:
 //   {
