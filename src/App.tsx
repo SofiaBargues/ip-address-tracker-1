@@ -37,6 +37,19 @@ function App() {
   console.log(location);
 
   useEffect(() => {
+    // setLocation({
+    //   country: "GB",
+    //   region: "England",
+    //   city: "Manchester",
+    //   lat: 53.48095,
+    //   lng: -2.23743,
+    //   postalCode: "",
+    //   timezone: "+01:00",
+    //   geonameId: 2643123,
+    // });
+    // setIp("hello");
+    // setIsp("world");
+    // return;
     fetch(
       "https://geo.ipify.org/api/v2/country,city?apiKey=" +
         import.meta.env.VITE_GEO_IP
@@ -150,7 +163,7 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="h-full relative z-0 grid grid-rows-[300px_1fr]">
+      <div className="h-full relative z-0 grid grid-rows-[300px_1fr] min-h-screen">
         <img
           src="/pattern-bg-mobile.png"
           alt=""
@@ -164,7 +177,7 @@ function App() {
 
         {location && (
           <MapContainer
-            className="h-[600px] w-full"
+            className="min-h-[500px] h-full w-full"
             key={JSON.stringify(coordinates)}
             center={coordinates}
             zoom={6}
