@@ -1,6 +1,7 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { FormEvent, useEffect, useState } from "react";
+import { icon, Icon } from "leaflet";
 
 // 2.a Cambiar tipo del estado a:
 //   {
@@ -84,6 +85,13 @@ function App() {
 
   console.log(ip);
 
+  const iconUrl = "/icon-location.svg";
+  const iconComp = icon({
+    iconUrl,
+    iconSize: [30, 38], // size of the icon
+    iconAnchor: [15, 38], // point of the icon which will correspond to marker's location
+  });
+
   return (
     <div className="w-full min-h-screen bg-slate-700 justify-center m-auto font-rubik relative ">
       <div className=" absolute flex flex-col gap-14 p-10 items-center w-full z-10 ">
@@ -166,7 +174,7 @@ function App() {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={coordinates}>
+            <Marker icon={iconComp} position={coordinates}>
               <Popup>
                 A pretty CSS3 popup. <br /> Easily customizable.
               </Popup>
